@@ -12,18 +12,18 @@
 // 在线接口文档：http://www.juhe.cn/docs/64
 //----------------------------------
  
-header('Content-type:text/html;charset=utf-8');
+header('Content-type:application/json;charset=utf-8');
 header('Access-Control-Allow-Origin：*');
  
 //配置您申请的appkey
 $appkey = "00f9ff1293e505d93e9b2571c4b16ee4"; 
  
 //************2.解梦查询************
-$url = " http://v.juhe.cn/dream/query";
+$url = "http://v.juhe.cn/dream/query";
 $params = array(
       "key" => $appkey,//应用APPKEY(应用详细页查询)
       "q" => isset($_GET['query'])?$_GET['query']:"",//梦境关键字，如：黄金 需要utf8 urlencode
-      "cid" => "",//指定分类，默认全部
+      //"cid" => 0,//指定分类，默认全部
       "full" => 0,//是否显示详细信息，1:是 0:否，默认0
 );
 $paramstring = http_build_query($params);
@@ -73,11 +73,12 @@ function juhecurl($url,$params=false,$ispost=0){
     }
     $response = curl_exec( $ch );
     if ($response === FALSE) {
-        //echo "cURL Error: " . curl_error($ch);
+        echo "cURL Error: " . curl_error($ch);
         return false;
     }
     $httpCode = curl_getinfo( $ch , CURLINFO_HTTP_CODE );
     $httpInfo = array_merge( $httpInfo , curl_getinfo( $ch ) );
     curl_close( $ch );
+	
     return $response;
 }

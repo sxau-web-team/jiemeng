@@ -12,7 +12,7 @@
 // 在线接口文档：http://www.juhe.cn/docs/64
 //----------------------------------
  
-header('Content-type:text/html;charset=utf-8');
+header('Content-type:application/json;charset=utf-8');
 header('Access-Control-Allow-Origin：*');
  
 //配置您申请的appkey
