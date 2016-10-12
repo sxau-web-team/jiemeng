@@ -13,7 +13,8 @@
 //----------------------------------
  
 header('Content-type:text/html;charset=utf-8');
- 
+header('Access-Control-Allow-Origin：*');
+header('Access-Control-Allow-Credentials', 'true'); 
  
 //配置您申请的appkey
 $appkey = "00f9ff1293e505d93e9b2571c4b16ee4"; 
@@ -22,9 +23,9 @@ $appkey = "00f9ff1293e505d93e9b2571c4b16ee4";
 $url = " http://v.juhe.cn/dream/query";
 $params = array(
       "key" => $appkey,//应用APPKEY(应用详细页查询)
-      "q" => $_GET['query'],//梦境关键字，如：黄金 需要utf8 urlencode
+      "q" => $_GET['query']?$_GET['query']:"",//梦境关键字，如：黄金 需要utf8 urlencode
       "cid" => "",//指定分类，默认全部
-      "full" => "",//是否显示详细信息，1:是 0:否，默认0
+      "full" => 0,//是否显示详细信息，1:是 0:否，默认0
 );
 $paramstring = http_build_query($params);
 $content = juhecurl($url,$paramstring);

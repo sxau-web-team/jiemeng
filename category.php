@@ -12,16 +12,17 @@
 // 在线接口文档：http://www.juhe.cn/docs/64
 //----------------------------------
  
-header('Content-type:text/html;charset=utf-8');
- 
- 
+header('Content-type:application/json;charset=utf-8');
+header('Access-Control-Allow-Origin：*');
+header('Access-Control-Allow-Credentials', 'true');
+
 //配置您申请的appkey
 $appkey = "00f9ff1293e505d93e9b2571c4b16ee4"; 
 //************1.类型************
 $url = "http://v.juhe.cn/dream/category";
 $params = array(
       "key" => $appkey,//应用APPKEY(应用详细页查询)
-      "fid" => "",//所属分类，默认全部，0:一级分类
+      "fid" => $_GET['fid']?$_GET['fid']:"",//所属分类，默认全部，0:一级分类
 );
 $paramstring = http_build_query($params);
 $content = juhecurl($url,$paramstring);
