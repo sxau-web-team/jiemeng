@@ -28,7 +28,7 @@ $content = juhecurl($url,$paramstring);
 $result = json_decode($content,true);
 if($result){
     if($result['error_code']=='0'){
-	echo $result;
+	echo $content;
     }else{
         echo $result['error_code'].":".$result['reason'];
     }
