@@ -18,7 +18,6 @@ ADD files/run.sh /
 ADD jiemeng /data/htdocs/
 
 RUN chmod +x /run.sh
-RUN chmod +x /create_db.sh
 
 EXPOSE 80
 
