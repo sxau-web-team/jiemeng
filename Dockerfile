@@ -8,7 +8,7 @@ RUN apk add --update curl wget git \
   php5-pdo_mysql php5-mysql php5-mysqli \
   php5-gd php5-mcrypt \
   php5-curl php5-openssl php5-json php5-dom php5-ctype && \
-  apk add -u musl php5-cli php5-iconv && \
+  apk add -u musl php5-cli && \
   mkdir -p /etc/nginx/conf.d && \
   curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
   rm -rf /var/cache/apk/*
